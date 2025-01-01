@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskAid - Login/Signup</title>
+    <link rel="stylesheet" href="/taskaid/public/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/TaskAid AllBlack.png" alt="TaskAid Logo" class="logo-img">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="sneekpeek.html">Sneak Peek</a>
+                <a href="info.html">ADHD</a>
+                <a class="login-btn active" href="login.html">Log In</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Welcome Back!</h2>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <input type="text" name="fullname" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="terms" required> I agree to the Terms & Conditions
+                    </label>
+                </div>
+                <button type="submit" class="auth-btn">Sign Up</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/TaskAid_Allwhite.png" alt="TaskAid Logo Footer" class="logo-img-footer">
+            </div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Resources</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon facebook"></a>
+                <a href="#" class="social-icon linkedin"></a>
+                <a href="#" class="social-icon instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="../public/js/login.js"></script>
+</body>
+</html>
