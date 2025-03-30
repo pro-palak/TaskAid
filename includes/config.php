@@ -1,8 +1,8 @@
 <?php
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');  // Default XAMPP username
-define('DB_PASSWORD', '');      // Default XAMPP has no password
-define('DB_NAME', 'taskaid');   // Your database name
+define('DB_USERNAME', 'root'); 
+define('DB_PASSWORD', '');
+define('DB_NAME', 'taskaid');
 
 try {
     $pdo = new PDO(

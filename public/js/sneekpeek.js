@@ -1,6 +1,4 @@
-// sneakpeek.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animations
     const sections = document.querySelectorAll('.feature-section');
     
     const observerOptions = {

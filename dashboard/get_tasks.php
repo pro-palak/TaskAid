@@ -10,7 +10,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 try {
-    // Explicitly filter by user_id
     $stmt = $pdo->prepare("
         SELECT * FROM tasks 
         WHERE user_id = ? 

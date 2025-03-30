@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     let currentSlide = 0;
 
-    // Create dots for slideshow navigation
     const dotsContainer = document.querySelector('.slideshow-dots');
     slideContent.forEach((_, index) => {
         const dot = document.createElement('div');
@@ -43,17 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = document.querySelectorAll('.dot');
 
     function updateSlide(index) {
-        // Update background color with smooth transition
         body.style.backgroundColor = slideContent[index].bgColor;
 
-        // Update character image with fade effect
         characterImg.style.opacity = '0';
         setTimeout(() => {
             characterImg.src = slideContent[index].character;
             characterImg.style.opacity = '1';
         }, 300);
 
-        // Update bubble texts with fade effect
         bubbles.forEach((bubble, i) => {
             bubble.style.opacity = '0';
             setTimeout(() => {
@@ -62,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         });
 
-        // Update active dot
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
@@ -73,10 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlide(currentSlide);
     }
 
-    // Initialize first slide
     updateSlide(0);
     dots[0].classList.add('active');
 
-    // Change slide every 3 seconds
     setInterval(nextSlide, 3000);
 });

@@ -7,7 +7,6 @@ ini_set('error_log', __DIR__ . '/error.log');
 
 require_once __DIR__ . "../../includes/config.php";
 
-// Check if user is logged in
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: /public/login.html");
     exit;
@@ -24,7 +23,6 @@ try {
     $tasks = [];
 }
 
-// Handle task operations
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = array();
     
@@ -71,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 
-// Fetch user's tasks
 $stmt = $pdo->prepare("SELECT * FROM tasks WHERE user_id = ? ORDER BY due_date ASC");
 $stmt->execute([$_SESSION["id"]]);
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -91,16 +88,31 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img src="../public/assets/TaskAid AllBlack.png" alt="TaskAid Logo" class="logo-img">
+            <a href="../public/index.html"><img src="../public/assets/TaskAid AllBlack.png" alt="TaskAid Logo" class="logo-img"></a>
             </div>
             <div class="nav-links">
             </div>
         </nav>
     </header>
 
+    <div class="white-noise-player">
+    <button id="noiseToggle" class="noise-toggle" aria-label="Toggle white noise">
+        <span class="noise-icon">🔊</span>
+        <span class="noise-status">Play</span>
+    </button>
+    <div class="volume-control">
+        <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+    </div>
+    <audio id="whiteNoiseAudio" loop preload="auto">
+        <source src="/taskaid/public/assets/WhiteNoise.mp3" type="audio/mpeg">
+        <source src="../public/assets/WhiteNoise.mp3" type="audio/mpeg">
+        <source src="../../public/assets/WhiteNoise.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    </div>
+
     <div class="todoContentWrapper">
         <main class="task-main">
-            <!-- Progress Bar -->
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="progress" style="width: 60%;"></div>
@@ -108,14 +120,11 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p class="progress-text">3 of 5 tasks completed today</p>
             </div>
     
-            <!-- Motivational Quote -->
             <div class="quote-container">
                 <p class="daily-quote">"You're doing great—one step at a time!"</p>
             </div>
     
-            <!-- Task Container with Notes -->
             <div class="task-and-notes">
-                <!-- Main Task Card -->
                 <div class="main-task-container">
                     <h2 class="focus-heading">Current Focus</h2>
                     <div class="task-card">
@@ -141,34 +150,24 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
     
-                <!-- Notes Section -->
                 <div class="notes-container">
                     <h3>Task Notes</h3>
                     <textarea id="taskNotes" placeholder="Add your notes here..."></textarea>
                 </div>
             </div>
     
-            <!-- Next Task Preview -->
-            <div class="next-task-preview">
-                <h3>Coming Up Next</h3>
-                <div class="preview-card">
-                    <p class="next-task-title">Review Weekly Notes</p>
-                    <span class="estimate">Estimated: 15 minutes</span>
-                </div>
-            </div>
+            <div class="reward-box">
+            </div>      
     
-            <!-- Quick Add Task Button -->
             <button class="quick-add-btn">
                 <span class="plus-icon">+</span>
                 Add New Task
             </button>
         </main>
-        <!-- Side Panel -->
         <div class="side-panel">
             <button class="panel-toggle" id="panelToggle">All Tasks</button>
             <div class="panel-content">
                 <div class="task-list">
-                    <!-- Task categories and list will go here -->
                 </div>
             </div>
         </div>
